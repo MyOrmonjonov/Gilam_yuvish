@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Crystal Clean — Premium Gilam Yuvish Toshkent</title>
+    <meta name="description" content="Toshkent bo‘ylab premium gilam yuvish, dog‘ ketkazish, antibakterial tozalash va uyga olib ketish xizmati." />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+          --bg: #07111f;
+          --card: rgba(255, 255, 255, 0.09);
+          --card-2: rgba(255, 255, 255, 0.13);
+          --text: #ffffff;
+          --muted: rgba(255, 255, 255, 0.72);
+          --line: rgba(255, 255, 255, 0.16);
+          --green: #34f5a7;
+          --blue: #5cc8ff;
+          --shadow: 0 30px 100px rgba(0, 0, 0, 0.45);
+          --radius: 28px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        body {
+          font-family: "Inter", sans-serif;
+          background: var(--bg);
+          color: var(--text);
+          overflow-x: hidden;
+        }
+
+        body::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          pointer-events: none;
+          background:
+            radial-gradient(circle at 20% 10%, rgba(52, 245, 167, .25), transparent 32%),
+            radial-gradient(circle at 80% 20%, rgba(92, 200, 255, .22), transparent 30%),
+            radial-gradient(circle at 50% 80%, rgba(255, 209, 102, .11), transparent 35%);
+          z-index: -2;
+        }
+
+        .noise {
+          position: fixed;
+          inset: 0;
+          background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.18'/%3E%3C/svg%3E");
+          opacity: .18;
+          pointer-events: none;
+          z-index: -1;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        img { max-width: 100%; display: block; }
+        .container { width: min(1180px, calc(100% - 36px)); margin: 0 auto; }
+
+        .nav {
+          position: fixed;
+          top: 18px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: min(1180px, calc(100% - 28px));
+          z-index: 50;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 18px;
+          padding: 14px 16px;
+          border: 1px solid var(--line);
+          background: rgba(7, 17, 31, .68);
+          backdrop-filter: blur(24px);
+          border-radius: 999px;
+          box-shadow: 0 18px 60px rgba(0, 0, 0, .22);
+        }
+
+        .brand {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          font-weight: 900;
+          letter-spacing: -.04em;
+          white-space: nowrap;
+        }
+
+        .logo {
+          width: 42px;
+          height: 42px;
+          display: grid;
+          place-items: center;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--green), var(--blue));
+          box-shadow: 0 0 35px rgba(52, 245, 167, .32);
+          color: #07111f;
+          font-size: 22px;
+        }
+
+        .nav-links { display: flex; align-items: center; gap: 22px; color: var(--muted); font-size: 14px; font-weight: 700; }
+        .nav-links a:hover { color: white; }
+
+        .nav-cta, .btn-primary, .btn-secondary {
+          border-radius: 999px;
+          font-weight: 900;
+          transition: .28s ease;
+          border: none;
+          cursor: pointer;
+          font-family: inherit;
+          font-size: 16px;
+        }
+
+        .nav-cta { padding: 12px 18px; background: white; color: #07111f; font-size: 14px; white-space: nowrap; }
+        .nav-cta:hover, .btn-primary:hover, .btn-secondary:hover { transform: translateY(-3px); }
+        .btn-primary:disabled { opacity: .65; cursor: not-allowed; transform: none; }
+
+        .hero { min-height: 100vh; padding: 150px 0 80px; display: grid; align-items: center; }
+        .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; gap: 54px; align-items: center; }
+
+        .badge {
+          width: fit-content;
+          padding: 9px 14px;
+          border: 1px solid rgba(52, 245, 167, .35);
+          background: rgba(52, 245, 167, .1);
+          border-radius: 999px;
+          color: #baffdf;
+          font-size: 13px;
+          font-weight: 900;
+          margin-bottom: 22px;
+        }
+
+        h1 { font-size: clamp(42px, 6vw, 86px); line-height: .93; letter-spacing: -.07em; margin-bottom: 24px; }
+        .gradient-text { background: linear-gradient(90deg, #fff, var(--green), var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .hero p { max-width: 650px; font-size: 18px; line-height: 1.7; color: var(--muted); margin-bottom: 30px; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 34px; }
+
+        .btn-primary { display: inline-block; padding: 17px 24px; background: linear-gradient(135deg, var(--green), var(--blue)); color: #07111f; box-shadow: 0 18px 48px rgba(52, 245, 167, .22); text-align: center; }
+        .btn-secondary { display: inline-block; padding: 16px 23px; border: 1px solid var(--line); background: rgba(255, 255, 255, .08); color: white; text-align: center; }
+
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 640px; }
+        .stat { padding: 18px; border-radius: 22px; background: rgba(255, 255, 255, .07); border: 1px solid var(--line); }
+        .stat strong { font-size: 28px; letter-spacing: -.04em; }
+        .stat span { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; font-weight: 600; }
+
+        .hero-card {
+          position: relative;
+          border-radius: 40px;
+          padding: 16px;
+          border: 1px solid var(--line);
+          background: linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,.05));
+          box-shadow: var(--shadow);
+          animation: float 5s ease-in-out infinite;
+        }
+
+        .hero-card::before {
+          content: "";
+          position: absolute;
+          inset: -1px;
+          border-radius: inherit;
+          padding: 1px;
+          background: linear-gradient(135deg, rgba(52,245,167,.8), rgba(92,200,255,.35), transparent);
+          -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          pointer-events: none;
+        }
+
+        .photo-wrap { position: relative; height: 560px; border-radius: 30px; overflow: hidden; background: #10243d; }
+        .photo-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: .9; filter: saturate(1.08) contrast(1.05); }
+        .photo-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(7,17,31,.92), transparent 60%); }
+
+        .floating-card {
+          position: absolute;
+          left: 24px;
+          right: 24px;
+          bottom: 24px;
+          padding: 20px;
+          border-radius: 24px;
+          background: rgba(7, 17, 31, .72);
+          border: 1px solid rgba(255,255,255,.18);
+          backdrop-filter: blur(18px);
+        }
+
+        .floating-card h3 { font-size: 24px; margin-bottom: 8px; letter-spacing: -.04em; }
+        .floating-card p { font-size: 14px; margin: 0; }
+
+        section { padding: 86px 0; }
+        .section-title { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 34px; }
+        .section-title h2 { max-width: 720px; font-size: clamp(32px, 4.2vw, 58px); line-height: 1; letter-spacing: -.06em; }
+        .section-title p { max-width: 410px; color: var(--muted); line-height: 1.6; font-weight: 500; }
+
+        .services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+        .service-card, .why-card, .price-card, .step, .contact-card { border: 1px solid var(--line); background: var(--card); border-radius: var(--radius); box-shadow: 0 20px 70px rgba(0,0,0,.18); }
+        .service-card { padding: 24px; min-height: 250px; display: flex; flex-direction: column; justify-content: space-between; transition: .3s ease; }
+        .service-card:hover { transform: translateY(-8px); background: var(--card-2); }
+        .icon { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 18px; background: rgba(52, 245, 167, .13); font-size: 26px; margin-bottom: 22px; }
+        .service-card h3 { font-size: 21px; letter-spacing: -.03em; margin-bottom: 12px; }
+        .service-card p { color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+        .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; align-items: stretch; }
+        .why-image { min-height: 520px; border-radius: 36px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--shadow); }
+        .why-image img { width: 100%; height: 100%; object-fit: cover; }
+        .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+        .why-card { padding: 24px; }
+        .why-card strong { display: block; font-size: 38px; letter-spacing: -.06em; margin-bottom: 10px; color: var(--green); }
+        .why-card p { color: var(--muted); line-height: 1.6; }
+
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; counter-reset: step; }
+        .step { position: relative; padding: 26px; min-height: 220px; overflow: hidden; }
+        .step::before { counter-increment: step; content: "0" counter(step); position: absolute; right: 20px; top: 12px; font-size: 70px; font-weight: 900; color: rgba(255,255,255,.06); letter-spacing: -.08em; }
+        .step h3 { margin-top: 58px; margin-bottom: 12px; font-size: 22px; }
+        .step p { color: var(--muted); line-height: 1.6; font-size: 14px; }
+
+        .gallery { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+        .gallery-big, .gallery-small { border-radius: 34px; overflow: hidden; border: 1px solid var(--line); position: relative; min-height: 460px; }
+        .gallery-small { display: grid; gap: 18px; border: none; min-height: auto; }
+        .gallery-small .g-item { border-radius: 34px; overflow: hidden; border: 1px solid var(--line); min-height: 221px; position: relative; }
+        .gallery img { width: 100%; height: 100%; object-fit: cover; transition: .5s ease; }
+        .gallery-big:hover img, .g-item:hover img { transform: scale(1.06); }
+        .label { position: absolute; left: 18px; bottom: 18px; padding: 10px 14px; border-radius: 999px; background: rgba(7,17,31,.72); backdrop-filter: blur(16px); border: 1px solid var(--line); font-weight: 900; font-size: 13px; }
+
+        .prices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+        .price-card { padding: 28px; position: relative; overflow: hidden; }
+        .price-card.popular { background: linear-gradient(180deg, rgba(52,245,167,.18), rgba(255,255,255,.08)); border-color: rgba(52,245,167,.42); }
+        .tag { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,.1); color: var(--muted); font-size: 12px; font-weight: 900; margin-bottom: 20px; }
+        .price-card h3 { font-size: 28px; letter-spacing: -.04em; margin-bottom: 10px; }
+        .price { font-size: 42px; font-weight: 900; letter-spacing: -.06em; margin: 20px 0; }
+        .price span { font-size: 15px; color: var(--muted); letter-spacing: 0; font-weight: 700; }
+        .features { display: grid; gap: 12px; margin: 22px 0 28px; color: var(--muted); font-weight: 600; }
+        .features li { list-style: none; }
+
+        .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+        .contact-card { padding: 34px; }
+        .contact-card h2 { font-size: clamp(34px, 4vw, 58px); line-height: 1; letter-spacing: -.06em; margin-bottom: 18px; }
+        .contact-card p { color: var(--muted); line-height: 1.7; margin-bottom: 22px; }
+        .contact-list { display: grid; gap: 14px; }
+        .contact-list a { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px; border: 1px solid var(--line); border-radius: 22px; background: rgba(255,255,255,.07); font-weight: 900; }
+
+        .form { display: grid; gap: 14px; }
+        .form input, .form textarea { width: 100%; border: 1px solid var(--line); outline: none; border-radius: 20px; padding: 18px; background: rgba(255,255,255,.08); color: white; font: inherit; }
+        .form textarea { min-height: 132px; resize: vertical; }
+        .form input::placeholder, .form textarea::placeholder { color: rgba(255,255,255,.52); }
+
+        footer { padding: 34px 0 100px; color: var(--muted); text-align: center; border-top: 1px solid var(--line); }
+        .mobile-call { display: none; position: fixed; left: 14px; right: 14px; bottom: 14px; z-index: 80; padding: 16px 18px; border-radius: 22px; text-align: center; font-weight: 900; color: #07111f; background: linear-gradient(135deg, var(--green), var(--blue)); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+        .reveal { opacity: 0; transform: translateY(24px); animation: reveal .75s ease forwards; }
+        .delay-1 { animation-delay: .1s; }
+        .delay-2 { animation-delay: .2s; }
+        .delay-3 { animation-delay: .3s; }
+        @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 980px) {
+          .nav-links { display: none; }
+          .hero { padding-top: 120px; }
+          .hero-grid, .split, .gallery, .contact { grid-template-columns: 1fr; }
+          .photo-wrap { height: 520px; }
+          .services, .steps, .prices { grid-template-columns: repeat(2, 1fr); }
+          .section-title { align-items: start; flex-direction: column; }
+        }
+
+        @media (max-width: 640px) {
+          .container { width: min(100% - 24px, 1180px); }
+          .nav { top: 10px; width: calc(100% - 20px); padding: 10px; }
+          .brand span { font-size: 14px; }
+          .logo { width: 38px; height: 38px; }
+          .nav-cta { display: none; }
+          .hero { min-height: auto; padding: 110px 0 42px; }
+          h1 { font-size: 46px; }
+          .hero p { font-size: 15.5px; }
+          .hero-actions { display: grid; }
+          .btn-primary, .btn-secondary { width: 100%; text-align: center; }
+          .stats { grid-template-columns: 1fr; }
+          .stat { padding: 16px; }
+          .photo-wrap { height: 430px; border-radius: 24px; }
+          .hero-card { border-radius: 30px; padding: 10px; }
+          .floating-card { left: 14px; right: 14px; bottom: 14px; }
+          section { padding: 56px 0; }
+          .services, .why-grid, .steps, .prices { grid-template-columns: 1fr; }
+          .service-card, .why-card, .step, .price-card, .contact-card { border-radius: 24px; }
+          .why-image { min-height: 360px; border-radius: 26px; }
+          .gallery-big { min-height: 360px; border-radius: 26px; }
+          .gallery-small .g-item { min-height: 240px; border-radius: 26px; }
+          .contact-card { padding: 24px; }
+          footer { padding-bottom: 92px; }
+          .mobile-call { display: block; }
+        }
+    </style>
+</head>
+<body>
+<div class="noise"></div>
+
+<nav class="nav">
+    <a href="#" class="brand">
+        <div class="logo">✦</div>
+        <span>Crystal Clean</span>
+    </a>
+
+    <div class="nav-links">
+        <a href="#services">Xizmatlar</a>
+        <a href="#why">Afzalliklar</a>
+        <a href="#prices">Narxlar</a>
+        <a href="#contact">Aloqa</a>
+    </div>
+
+    <a class="nav-cta" href="tel:+998990800042">99 080 00 42</a>
+</nav>
+
+<main>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="badge reveal">Toshkent bo‘ylab premium gilam yuvish</div>
+                <h1 class="reveal delay-1">Gilamingiz <span class="gradient-text">yangi dek</span> toza ko‘rinsin</h1>
+                <p class="reveal delay-2">Uyga kelib olib ketamiz, zamonaviy uskunada yuvamiz, dog‘larni ketkazamiz va gilamingizni xushbo‘y, yumshoq hamda toza holatda qaytaramiz.</p>
+
+                <div class="hero-actions reveal delay-3">
+                    <a class="btn-primary" href="tel:+998990800042">📞 Hozir buyurtma berish</a>
+                    <a class="btn-secondary" href="https://t.me/gilam_yuvish_n01" target="_blank" rel="noopener">💬 Telegramga yozish</a>
+                </div>
+
+                <div class="stats reveal delay-3">
+                    <div class="stat"><strong>24 soat</strong><span>ichida qabul</span></div>
+                    <div class="stat"><strong>100%</strong><span>antibakterial tozalash</span></div>
+                    <div class="stat"><strong>2 ta</strong><span>telefon orqali buyurtma</span></div>
+                </div>
+            </div>
+
+            <div class="hero-card reveal delay-2">
+                <div class="photo-wrap">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=85" alt="Premium carpet cleaning service">
+                    <div class="photo-overlay"></div>
+                    <div class="floating-card">
+                        <h3>Dog‘, chang va hidga qarshi chuqur tozalash</h3>
+                        <p>Gilam tolalariga zarar bermasdan, professional usulda yuvish xizmati.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium xizmatlarimiz</h2>
+                <p>Har bir gilam alohida tekshiriladi va uning materiali, dog‘i va holatiga qarab tozalash usuli tanlanadi.</p>
+            </div>
+
+            <div class="services">
+                <div class="service-card"><div><div class="icon">🧼</div><h3>Gilam yuvish</h3><p>Chang, kir va yoqimsiz hidlardan chuqur tozalash.</p></div></div>
+                <div class="service-card"><div><div class="icon">✨</div><h3>Dog‘ ketkazish</h3><p>Choy, kofe, yog‘ va boshqa qiyin dog‘larni maxsus vositalar bilan ketkazish.</p></div></div>
+                <div class="service-card"><div><div class="icon">🛡️</div><h3>Antibakterial tozalash</h3><p>Bolali uylar uchun gigiyenik va xavfsiz tozalash.</p></div></div>
+                <div class="service-card"><div><div class="icon">🚚</div><h3>Olib ketish va yetkazish</h3><p>Toshkent bo‘ylab qulay va tezkor xizmat.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why">
+        <div class="container split">
+            <div class="why-image">
+                <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=1100&q=85" alt="Clean home interior">
+            </div>
+
+            <div>
+                <div class="section-title"><h2>Nega mijozlar bizni tanlaydi?</h2></div>
+                <div class="why-grid">
+                    <div class="why-card"><strong>01</strong><p>Gilam tolalariga zarar bermaydigan yumshoq, ammo kuchli tozalash.</p></div>
+                    <div class="why-card"><strong>02</strong><p>Buyurtmani telefon yoki Telegram orqali tez qabul qilamiz.</p></div>
+                    <div class="why-card"><strong>03</strong><p>Uyga borib olib ketish va toza holatda qaytarib berish.</p></div>
+                    <div class="why-card"><strong>04</strong><p>Natija: toza, xushbo‘y, yumshoq va yangidek gilam.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Qanday ishlaymiz?</h2>
+                <p>Buyurtma berishdan to gilam yetkazib berilguncha jarayon juda oddiy va qulay.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step"><h3>Qo‘ng‘iroq</h3><p>Siz telefon qilasiz yoki Telegram orqali yozasiz.</p></div>
+                <div class="step"><h3>Olib ketish</h3><p>Manzilingizdan gilamlarni olib ketamiz.</p></div>
+                <div class="step"><h3>Yuvish</h3><p>Materialiga mos usulda chuqur tozalaymiz.</p></div>
+                <div class="step"><h3>Yetkazish</h3><p>Toza va quruq holatda qaytarib beramiz.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>Tozalik natijasi</h2>
+                <p>Saytga o‘zingizning real oldin/keyin rasmlaringizni qo‘ysangiz, mijoz ishonchi yanada kuchayadi.</p>
+            </div>
+
+            <div class="gallery">
+                <div class="gallery-big">
+                    <img src="https://images.unsplash.com/photo-1516455207990-7a41ce80f7ee?auto=format&fit=crop&w=1300&q=85" alt="Clean carpet result">
+                    <div class="label">Oldin / Keyin galereya</div>
+                </div>
+                <div class="gallery-small">
+                    <div class="g-item"><img src="https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85" alt="Clean living room carpet"><div class="label">Premium tozalik</div></div>
+                    <div class="g-item"><img src="https://images.unsplash.com/photo-1560185127-6ed189bf02f4?auto=format&fit=crop&w=900&q=85" alt="Modern clean interior"><div class="label">Uyga qulay xizmat</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prices">
+        <div class="container">
+            <div class="section-title">
+                <h2>Narx paketlari</h2>
+                <p>Narxlarni o‘zingizning real tarifingizga almashtirib qo‘yishingiz mumkin.</p>
+            </div>
+
+            <div class="prices">
+                <div class="price-card">
+                    <div class="tag">Standart</div>
+                    <h3>Oddiy yuvish</h3>
+                    <div class="price">10 000 <span>so‘m / m²</span></div>
+                    <ul class="features"><li>✓ Chang va kirlarni tozalash</li><li>✓ Xushbo‘y yuvish</li><li>✓ Quruq holatda topshirish</li></ul>
+                    <a class="btn-secondary" href="tel:+998990800042">Tanlash</a>
+                </div>
+
+                <div class="price-card popular">
+                    <div class="tag">Eng ko‘p tanlanadi</div>
+                    <h3>Premium yuvish</h3>
+                    <div class="price">15 000 <span>so‘m / m²</span></div>
+                    <ul class="features"><li>✓ Chuqur tozalash</li><li>✓ Dog‘ ketkazish</li><li>✓ Antibakterial ishlov</li></ul>
+                    <a class="btn-primary" href="tel:+998990800042">Buyurtma berish</a>
+                </div>
+
+                <div class="price-card">
+                    <div class="tag">Komfort</div>
+                    <h3>Olib ketish</h3>
+                    <div class="price">Kelishiladi</div>
+                    <ul class="features"><li>✓ Uyga borish</li><li>✓ Olib ketish</li><li>✓ Yetkazib berish</li></ul>
+                    <a class="btn-secondary" href="tel:+998991049393">Bog‘lanish</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container contact">
+            <div class="contact-card">
+                <h2>Bugunoq buyurtma bering</h2>
+                <p>Telefon qiling — gilamlaringizni olib ketish, narx va xizmat turi bo‘yicha tezda maslahat beramiz.</p>
+                <div class="contact-list">
+                    <a href="tel:+998990800042"><span>📞 99 080 00 42</span><span>→</span></a>
+                    <a href="tel:+998991049393"><span>📞 99 104 93 93</span><span>→</span></a>
+                    <a href="https://t.me/gilam_yuvish_n01" target="_blank" rel="noopener"><span>💬 Telegram orqali yozish</span><span>→</span></a>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <form class="form" id="orderForm" novalidate>
+                    <input id="name" name="name" type="text" placeholder="Ismingiz" required>
+                    <input id="phone" name="phone" type="tel" placeholder="Telefon raqamingiz" required>
+                    <textarea id="message" name="message" placeholder="Masalan: 3 ta gilam yuvish kerak"></textarea>
+                    <button class="btn-primary" type="submit">Zayavka yuborish</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">© 2026 Crystal Clean. Gilam yuvish, stirka kovrov, kovyor tozalash, gilam yuvish Toshkent.</div>
+</footer>
+
+<a class="mobile-call" href="tel:+998990800042">📞 Hozir qo‘ng‘iroq qilish</a>
+
+<script>
+    (function () {
+      "use strict";
+
+      const TELEGRAM_BOT_TOKEN = "8414636945:AAGGio8K7c6_IlV47X30TrZmbgUWNie7kis";
+      const TELEGRAM_CHAT_ID = "@gilam_yuvish_n01";
+
+      function buildOrderMessage(name, phone, message) {
+        return [
+          "📥 YANGI ZAYAVKA",
+          "",
+          `👤 Ism: ${name}`,
+          `📞 Telefon: ${phone}`,
+          `📝 Xabar: ${message || "—"}`
+        ].join("\n");
+      }
+
+      async function sendTelegramMessage(text) {
+        const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            chat_id: TELEGRAM_CHAT_ID,
+            text: text
+          })
+        });
+
+        const data = await response.json();
+        if (!response.ok || !data.ok) {
+          throw new Error(data.description || "Telegram API xatolik qaytardi");
+        }
+        return data;
+      }
+
+      async function sendOrder(event) {
+        event.preventDefault();
+
+        const form = event.currentTarget;
+        const nameInput = document.getElementById("name");
+        const phoneInput = document.getElementById("phone");
+        const messageInput = document.getElementById("message");
+        const button = form.querySelector("button[type='submit']");
+
+        const name = nameInput.value.trim();
+        const phone = phoneInput.value.trim();
+        const message = messageInput.value.trim();
+
+        if (!name || !phone) {
+          alert("Iltimos, ism va telefon raqamni kiriting.");
+          return;
+        }
+
+        const oldButtonText = button.textContent;
+        button.textContent = "Yuborilmoqda...";
+        button.disabled = true;
+
+        try {
+          await sendTelegramMessage(buildOrderMessage(name, phone, message));
+          alert("Zayavka Telegramga yuborildi ✅");
+          form.reset();
+        } catch (error) {
+          console.error("Telegram yuborish xatosi:", error);
+          alert("Telegramga yuborilmadi ❌\nSabab: " + error.message);
+        } finally {
+          button.textContent = oldButtonText;
+          button.disabled = false;
+        }
+      }
+
+      window.sendOrder = sendOrder;
+      window.buildOrderMessage = buildOrderMessage;
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("orderForm");
+        if (form) {
+          form.addEventListener("submit", sendOrder);
+        }
+
+        // Minimal testlar: browser console'da ko‘rinadi.
+        console.assert(typeof window.sendOrder === "function", "TEST: sendOrder global function bo‘lishi kerak");
+        console.assert(
+          buildOrderMessage("Ali", "+998901112233", "2 ta gilam").includes("Ali") &&
+          buildOrderMessage("Ali", "+998901112233", "2 ta gilam").includes("+998901112233") &&
+          buildOrderMessage("Ali", "+998901112233", "2 ta gilam").includes("2 ta gilam"),
+          "TEST: buildOrderMessage ism, telefon va xabarni qo‘shishi kerak"
+        );
+        console.assert(
+          buildOrderMessage("Vali", "990000000", "").includes("📝 Xabar: —"),
+          "TEST: bo‘sh xabar bo‘lsa tire qo‘yilishi kerak"
+        );
+      });
+    })();
+</script>
+</body>
+</html>
